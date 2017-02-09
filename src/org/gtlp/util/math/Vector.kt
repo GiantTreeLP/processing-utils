@@ -5,7 +5,6 @@ import java.util.*
 
 /**
  * Data class for two-dimensional or three-dimensional vectors.
- * Immutable.
  */
 data class Vector(var x: Float, var y: Float, var z: Float = 0f) : Comparable<Vector>, Cloneable, Serializable {
 
