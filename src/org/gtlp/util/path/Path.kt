@@ -1,8 +1,6 @@
 package org.gtlp.util.path
 
 import org.gtlp.util.math.Vector
-import processing.core.PApplet
-import java.awt.Color
 import java.util.*
 
 /**
@@ -40,6 +38,15 @@ data class Path(val length: Float) {
     }
 
     /**
+     * Get all points that create this path
+     *
+     * @return a collection of [Vector]s
+     */
+    fun get(): Collection<Vector> {
+        return pointsMap.values.toSet()
+    }
+
+    /**
      * Sets the position at a certain progress.
      *
      * @param progress the progress as a [Float] between 0 and [length] (not checked).
@@ -73,28 +80,6 @@ data class Path(val length: Float) {
             }
         }
         return candidate
-    }
-
-    /**
-     * Draws this path to the surface of a [PApplet].
-     *
-     * @param applet the [PApplet] to draw at.
-     * @param strokeColor the color for this path, default to [Color.WHITE]
-     * @param strokeWeight the width of the path, default to **4f**
-     */
-    fun draw(applet: PApplet, strokeColor: Color = Color.WHITE, strokeWeight: Float = 4f) {
-        applet.apply {
-            pushMatrix()
-            pushStyle()
-            beginShape()
-            noFill()
-            stroke(strokeColor.rgb)
-            strokeWeight(strokeWeight)
-            pointsMap.forEach { vertex(it.value.x, it.value.y) }
-            endShape()
-            popStyle()
-            popMatrix()
-        }
     }
 
     /**
