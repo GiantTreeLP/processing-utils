@@ -302,7 +302,7 @@ data class Vector(var x: Float, var y: Float, var z: Float = 0f) : Comparable<Ve
         /**
          * General origin vector (0, 0, 0)
          */
-        val ZERO = Vector(0, 0)
+        val ZERO = Vector(0, 0, 0)
 
         /**
          * Infinite vector. No real use.
