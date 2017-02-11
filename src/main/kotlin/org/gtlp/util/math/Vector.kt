@@ -1,7 +1,7 @@
 package org.gtlp.util.math
 
 import java.io.Serializable
-import java.util.*
+import java.util.Objects
 
 /**
  * Data class for two-dimensional or three-dimensional vectors.
