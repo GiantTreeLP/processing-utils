@@ -2,7 +2,6 @@
 A collection of utilities to aid developers using Processing. Built on Kotlin for even more usefulness.
 
 [![Build Status](https://travis-ci.org/GiantTreeLP/processing-utils.svg?branch=master)](https://travis-ci.org/GiantTreeLP/processing-utils)
-[![Build status](https://ci.appveyor.com/api/projects/status/g6g2s9xkosy0ci2d?svg=true)](https://ci.appveyor.com/project/GiantTreeLP/processing-utils)
 
 Example:  
 -----
