@@ -1,7 +1,8 @@
 package org.gtlp.util.math
 
 import java.io.Serializable
-import java.util.Objects
+import java.lang.StrictMath.abs
+import java.util.*
 
 /**
  * Data class for two-dimensional or three-dimensional vectors.
@@ -15,11 +16,11 @@ data class Vector(var x: Float, var y: Float, var z: Float = 0f) : Comparable<Ve
      *
      * @return a new vector multiplied by the [factor]
      */
-    infix operator fun times(factor: Float): Vector {
+    infix operator fun times(factor: Number): Vector {
         val vector = Vector(this)
-        vector.x *= factor
-        vector.y *= factor
-        vector.z *= factor
+        vector.x *= factor.toFloat()
+        vector.y *= factor.toFloat()
+        vector.z *= factor.toFloat()
         return vector
     }
 
@@ -45,11 +46,11 @@ data class Vector(var x: Float, var y: Float, var z: Float = 0f) : Comparable<Ve
      *
      * @return a new vector divided by the [divisor]
      */
-    infix operator fun div(divisor: Float): Vector {
+    infix operator fun div(divisor: Number): Vector {
         val vector = Vector(this)
-        vector.x /= divisor
-        vector.y /= divisor
-        vector.z /= divisor
+        vector.x /= divisor.toFloat()
+        vector.y /= divisor.toFloat()
+        vector.z /= divisor.toFloat()
         return vector
     }
 
@@ -133,8 +134,8 @@ data class Vector(var x: Float, var y: Float, var z: Float = 0f) : Comparable<Ve
      *
      * @return the magnitude of this vector
      */
-    fun mag(): Float {
-        return StrictMath.sqrt((x * x + y * y + z * z).toDouble()).toFloat()
+    fun mag(): Double {
+        return StrictMath.sqrt((x * x + y * y + z * z).toDouble())
     }
 
     /**
@@ -179,7 +180,7 @@ data class Vector(var x: Float, var y: Float, var z: Float = 0f) : Comparable<Ve
      * @return this vector normalized to a length of 1
      */
     fun normalize(): Vector {
-        return if (mag() != 0f) div(0f) else clone()
+        return if (mag() != 0.toDouble()) div(mag()) else clone()
     }
 
     /**
@@ -196,8 +197,8 @@ data class Vector(var x: Float, var y: Float, var z: Float = 0f) : Comparable<Ve
      *
      * @return this vector limited to a magnitude [limit]
      */
-    infix fun limit(limit: Float): Vector {
-        return if (magSq() < limit * limit) clone() else normalize() * limit
+    infix fun limit(limit: Number): Vector {
+        return if (magSq() < limit.toFloat() * limit.toFloat()) clone() else normalize() * limit
     }
 
     /**
@@ -208,7 +209,7 @@ data class Vector(var x: Float, var y: Float, var z: Float = 0f) : Comparable<Ve
      *
      * @return a new vector that sits between this and [vector] by [amount]*100 percent
      */
-    fun lerp(vector: Vector, amount: Float): Vector {
+    fun lerp(vector: Vector, amount: Number): Vector {
         return this + (vector - this) * amount
     }
 
@@ -248,10 +249,9 @@ data class Vector(var x: Float, var y: Float, var z: Float = 0f) : Comparable<Ve
         if (other?.javaClass != javaClass) return false
 
         other as Vector
-
-        if (x != other.x) return false
-        if (y != other.y) return false
-        if (z != other.z) return false
+        if (abs(x - other.x) > Math.ulp(x)) return false
+        if (abs(y - other.y) > Math.ulp(y)) return false
+        if (abs(z - other.z) > Math.ulp(z)) return false
 
         return true
     }
