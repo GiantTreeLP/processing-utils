@@ -2,6 +2,7 @@
 A collection of utilities to aid developers using Processing. Built on Kotlin for even more usefulness.
 
 [![Build Status](https://travis-ci.org/GiantTreeLP/processing-utils.svg?branch=master)](https://travis-ci.org/GiantTreeLP/processing-utils)
+[![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.github.gianttreelp/gtlp-processing-utils/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.github.gianttreelp/gtlp-processing-utils)
 
 Example:  
 -----
