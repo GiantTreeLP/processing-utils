@@ -3,7 +3,8 @@ A collection of utilities to aid developers using Processing. Built on Kotlin fo
 
 [![Build Status](https://travis-ci.org/GiantTreeLP/processing-utils.svg?branch=master)](https://travis-ci.org/GiantTreeLP/processing-utils)
 [![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.github.gianttreelp/gtlp-processing-utils/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.github.gianttreelp/gtlp-processing-utils)
-
+[![Dependencies](https://app.updateimpact.com/badge/831936721338896384/processing-utils.svg?config=test)](https://app.updateimpact.com/latest/831936721338896384/processing-utils)
+                            
 Example:  
 -----
 Vector - A nice vector that allows the use of infix operators to behave naturally and less like Java's BigDecimal.
