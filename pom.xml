@@ -6,7 +6,7 @@
 
     <groupId>com.github.gianttreelp</groupId>
     <artifactId>gtlp-processing-utils</artifactId>
-    <version>1.0</version>
+    <version>1.0.1</version>
     <packaging>jar</packaging>
 
     <name>processing-utils</name>
