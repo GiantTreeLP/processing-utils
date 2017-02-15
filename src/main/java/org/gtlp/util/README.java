@@ -1,4 +1,4 @@
-package org.gtlp.ui;
+package org.gtlp.util;
 
 /**
  * JavaDoc is unavailable due to the fact that this project is written in Kotlin.
