@@ -74,7 +74,7 @@ data class Path(val length: Float) {
     private fun getNearestAfter(progress: Float): MutableMap.MutableEntry<Float, Vector>? {
         var candidate: MutableMap.MutableEntry<Float, Vector>? = null
         var candidateDistance: Float = Float.MAX_VALUE
-        pointsMap.entries.forEach {
+        pointsMap.entries.reversed().forEach {
             if (it.key < progress) return@forEach
             val distance = it.key - progress
             if (distance >= 0 && distance <= candidateDistance) {
