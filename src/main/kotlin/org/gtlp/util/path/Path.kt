@@ -47,19 +47,21 @@ data class Path(val length: Float) {
     }
 
     /**
-     * Sets the position at a certain progress.
+     * Sets the position at a certain progress and sorts the map.
      *
      * @param progress the progress as a [Float] between 0 and [length] (not checked).
      * @param position the position at [progress]
      */
     operator fun set(progress: Float, position: Vector) {
         pointsMap[progress] = position
+        pointsMap.toSortedMap()
     }
 
     private fun getNearestBefore(progress: Float): MutableMap.MutableEntry<Float, Vector>? {
         var candidate: MutableMap.MutableEntry<Float, Vector>? = null
         var candidateDistance: Float = Float.MAX_VALUE
         pointsMap.entries.forEach {
+            if (it.key > progress) return@forEach
             val distance = progress - it.key
             if (distance >= 0 && distance <= candidateDistance) {
                 candidate = it
@@ -73,6 +75,7 @@ data class Path(val length: Float) {
         var candidate: MutableMap.MutableEntry<Float, Vector>? = null
         var candidateDistance: Float = Float.MAX_VALUE
         pointsMap.entries.forEach {
+            if (it.key < progress) return@forEach
             val distance = it.key - progress
             if (distance >= 0 && distance <= candidateDistance) {
                 candidate = it
