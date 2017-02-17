@@ -46,9 +46,18 @@ open class FloatProgression internal constructor(
     /** Checks if the progression is empty. */
     open fun isEmpty(): Boolean = if (step > 0) first > last else first < last
 
-    override fun equals(other: Any?): Boolean =
-            other is FloatProgression && (isEmpty() && other.isEmpty() ||
-                    first == other.first && last == other.last && step == other.step)
+    override fun equals(other: Any?): Boolean {
+        if (this === other) return true
+        if (other?.javaClass != javaClass) return false
+
+        other as FloatProgression
+
+        if (step != other.step) return false
+        if (first != other.first) return false
+        if (last != other.last) return false
+
+        return true
+    }
 
     override fun hashCode(): Int =
             if (isEmpty()) -1 else (31f * (31f * first + last) + step).toInt()

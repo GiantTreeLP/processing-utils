@@ -11,10 +11,8 @@ class FloatRange(override val start: Float, override val endInclusive: Float, st
 
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
-        if (other?.javaClass != javaClass) return false
+        if (other !is FloatRange) return false
         if (!super.equals(other)) return false
-
-        other as FloatRange
 
         if (start != other.start) return false
         if (endInclusive != other.endInclusive) return false
@@ -26,7 +24,6 @@ class FloatRange(override val start: Float, override val endInclusive: Float, st
             if (isEmpty()) -1 else (31f * first + last).toInt()
 
     override fun toString(): String = "$first..$last"
-
 
     companion object {
         /** An empty range. */
