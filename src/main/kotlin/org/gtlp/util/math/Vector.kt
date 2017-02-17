@@ -2,6 +2,7 @@ package org.gtlp.util.math
 
 import java.io.Serializable
 import java.lang.StrictMath.abs
+import java.lang.StrictMath.signum
 import java.util.*
 
 /**
@@ -244,11 +245,29 @@ data class Vector(var x: Float, var y: Float, var z: Float = 0f) : Comparable<Ve
         return this
     }
 
+    @Suppress("ReplaceCallWithComparison")
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
         if (other?.javaClass != javaClass) return false
 
         other as Vector
+
+        // Catch either NaN as it may break later when used with non-NaN values
+        if (x.isNaN() != other.x.isNaN()) return false
+        if (y.isNaN() != other.y.isNaN()) return false
+        if (z.isNaN() != other.z.isNaN()) return false
+
+        // Make sure either both numbers or none are infinite
+        if (x.isFinite() != other.x.isFinite()) return false
+        if (y.isFinite() != other.y.isFinite()) return false
+        if (z.isFinite() != other.z.isFinite()) return false
+
+        // Catch sign of NaN with equals() instead of ==
+        if (!signum(x).equals(signum(other.x))) return false
+        if (!signum(y).equals(signum(other.y))) return false
+        if (!signum(z).equals(signum(other.z))) return false
+
+        // Make sure numbers are within one ulp of another
         if (abs(x - other.x) > Math.ulp(x)) return false
         if (abs(y - other.y) > Math.ulp(y)) return false
         if (abs(z - other.z) > Math.ulp(z)) return false
