@@ -181,7 +181,7 @@ data class Vector(var x: Float, var y: Float, var z: Float = 0f) : Comparable<Ve
      * @return this vector normalized to a length of 1
      */
     fun normalize(): Vector {
-        return if (mag() != 0.toDouble()) div(mag()) else clone()
+        return if (mag() != 0.0) div(mag()) else clone()
     }
 
     /**
@@ -318,20 +318,26 @@ data class Vector(var x: Float, var y: Float, var z: Float = 0f) : Comparable<Ve
 
 
     companion object {
+        private val _ZERO = Vector(0, 0, 0)
         /**
          * General origin vector (0, 0, 0)
          */
-        val ZERO = Vector(0, 0, 0)
+        val ZERO: Vector
+            get() = _ZERO.clone()
 
+        private val _INF = Vector(Float.POSITIVE_INFINITY, Float.POSITIVE_INFINITY, Float.POSITIVE_INFINITY)
         /**
          * Infinite vector. No real use.
          */
-        val INF = Vector(Float.POSITIVE_INFINITY, Float.POSITIVE_INFINITY, Float.POSITIVE_INFINITY)
+        val INF: Vector
+            get() = _INF.clone()
 
+        private val _NAN = Vector(Float.NaN, Float.NaN, Float.NaN)
         /**
          * Invalid vector. Used to indicate no position.
          */
-        val NAN = Vector(Float.NaN, Float.NaN, Float.NaN)
+        val NAN: Vector
+            get() = _NAN.clone()
 
         /**
          * Creates a two-dimensional vector heading to [angle].
