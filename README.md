@@ -4,7 +4,8 @@ A collection of utilities to aid developers using Processing. Built on Kotlin fo
 [![Build Status](https://travis-ci.org/GiantTreeLP/processing-utils.svg?branch=master)](https://travis-ci.org/GiantTreeLP/processing-utils)
 [![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.github.gianttreelp/gtlp-processing-utils/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.github.gianttreelp/gtlp-processing-utils)
 [![Dependencies](https://app.updateimpact.com/badge/831936721338896384/processing-utils.svg?config=test)](https://app.updateimpact.com/latest/831936721338896384/processing-utils)
-[![Dependency Status](https://www.versioneye.com/user/projects/58a71900a782d1002e644046/badge.svg?style=flat-square)](https://www.versioneye.com/user/projects/58a71900a782d1002e644046)
+[![Dependency Status](https://www.versioneye.com/user/projects/58a71900a782d1002e644046/badge.svg?style=flat)](https://www.versioneye.com/user/projects/58a71900a782d1002e644046)
+[![GitHub release](https://img.shields.io/github/release/gianttreelp/processing-utils.svg)](https://github.com/GiantTreeLP/processing-utils/releases)
 
 Example:  
 -----
