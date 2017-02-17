@@ -23,6 +23,7 @@ data class Path(val length: Float) {
      *
      * @return A [Vector] defining the position at the given progress
      */
+    @Throws(InconsistentDataException::class)
     operator fun get(progress: Float): Vector {
         val left = getNearestBefore(progress)
         val right = getNearestAfter(progress)
