@@ -269,13 +269,7 @@
                     <execution>
                         <phase>pre-site</phase>
                         <goals>
-                            <goal>dokka</goal>
-                        </goals>
-                    </execution>
-                    <execution>
-                        <id>attach-javadocs</id>
-                        <goals>
-                            <goal>javadocJar</goal>
+                            <goal>javadoc</goal>
                         </goals>
                     </execution>
                 </executions>
@@ -288,6 +282,7 @@
                             </url>
                         </link>
                     </sourceLinks>
+                    <outputdir>${project.basedir}/target/apidocs</outputdir>
                 </configuration>
             </plugin>
         </plugins>
