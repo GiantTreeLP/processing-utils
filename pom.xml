@@ -272,6 +272,12 @@
                             <goal>dokka</goal>
                         </goals>
                     </execution>
+                    <execution>
+                        <id>attach-javadocs</id>
+                        <goals>
+                            <goal>javadocJar</goal>
+                        </goals>
+                    </execution>
                 </executions>
                 <configuration>
                     <sourceLinks>
