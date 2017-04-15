@@ -8,6 +8,7 @@ import processing.core.PApplet
 
 /**
  * Converts all parameters to [Float]. For convenience only.
+ * Follows the same procedure as [PApplet.map]
  *
  * @see PApplet.map
  */

@@ -13,6 +13,9 @@ import java.util.*
  */
 data class Path(val length: Float) {
 
+    /**
+     * A map to store [Vector]s at a specified progress.
+     */
     private var pointsMap = mutableMapOf<Float, Vector>()
 
     /**
@@ -55,16 +58,30 @@ data class Path(val length: Float) {
      */
     operator fun set(progress: Float, position: Vector) {
         pointsMap[progress] = position
-        pointsMap.toSortedMap()
+        pointsMap = pointsMap.toSortedMap()
     }
 
+    /**
+     * Looks for the nearest [Vector] in [pointsMap] with a progress less
+     * than or equal to [progress].
+     *
+     * This implementation returns early when the progress of a vector is
+     * greater than the limiting parameter.
+     *
+     * @param progress the limiting progress
+     *
+     * @return the nearest [Vector] in [pointsMap] that has a progress
+     * smaller than or equal to [progress]
+     *
+     * @see getNearestAfter
+     */
     private fun getNearestBefore(progress: Float): MutableMap.MutableEntry<Float, Vector>? {
         var candidate: MutableMap.MutableEntry<Float, Vector>? = null
         var candidateDistance: Float = Float.MAX_VALUE
         pointsMap.entries.forEach {
             if (it.key > progress) return@forEach
             val distance = progress - it.key
-            if (distance >= 0 && distance <= candidateDistance) {
+            if (distance in 0f..candidateDistance) {
                 candidate = it
                 candidateDistance = distance
             }
@@ -72,13 +89,27 @@ data class Path(val length: Float) {
         return candidate
     }
 
+    /**
+     * Looks for the nearest [Vector] in [pointsMap] with a progress greater
+     * than or equal to [progress].
+     *
+     * This implementation returns early when the progress of a vector is
+     * less than the limiting parameter.
+     *
+     * @param progress the limiting progress
+     *
+     * @return the nearest [Vector] in [pointsMap] that has a progress
+     * greater than or equal to [progress]
+     *
+     * @see getNearestBefore
+     */
     private fun getNearestAfter(progress: Float): MutableMap.MutableEntry<Float, Vector>? {
         var candidate: MutableMap.MutableEntry<Float, Vector>? = null
         var candidateDistance: Float = Float.MAX_VALUE
         pointsMap.entries.reversed().forEach {
             if (it.key < progress) return@forEach
             val distance = it.key - progress
-            if (distance >= 0 && distance <= candidateDistance) {
+            if (distance in 0f..candidateDistance) {
                 candidate = it
                 candidateDistance = distance
             }

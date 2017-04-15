@@ -318,30 +318,27 @@ data class Vector(var x: Float, var y: Float, var z: Float = 0f) : Comparable<Ve
 
 
     companion object {
-        private val _ZERO = Vector(0, 0, 0)
         /**
          * General origin vector (0, 0, 0)
          */
         val ZERO: Vector
-            get() = _ZERO.clone()
+            get() = Vector(0, 0, 0)
 
-        private val _INF = Vector(Float.POSITIVE_INFINITY, Float.POSITIVE_INFINITY, Float.POSITIVE_INFINITY)
         /**
          * Infinite vector. No real use.
          */
         val INF: Vector
-            get() = _INF.clone()
+            get() = Vector(Float.POSITIVE_INFINITY, Float.POSITIVE_INFINITY, Float.POSITIVE_INFINITY).clone()
 
-        private val _NAN = Vector(Float.NaN, Float.NaN, Float.NaN)
         /**
          * Invalid vector. Used to indicate no position.
          */
         val NAN: Vector
-            get() = _NAN.clone()
+            get() = Vector(Float.NaN, Float.NaN, Float.NaN).clone()
 
         /**
          * Creates a two-dimensional vector heading to [angle].
-         * Z = 0.
+         * [z] = 0.
          *
          * @param angle the angle to head towards
          *
