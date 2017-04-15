@@ -282,7 +282,6 @@
                             </url>
                         </link>
                     </sourceLinks>
-                    <outputdir>${project.basedir}/target/apidocs</outputdir>
                 </configuration>
             </plugin>
         </plugins>
