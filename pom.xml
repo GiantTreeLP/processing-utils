@@ -267,9 +267,17 @@
                 <version>${dokka.version}</version>
                 <executions>
                     <execution>
+                        <id>javadoc-site</id>
                         <phase>pre-site</phase>
                         <goals>
                             <goal>javadoc</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>dokka-javadoc</id>
+                        <phase>process-sources</phase>
+                        <goals>
+                            <goal>javadocJar</goal>
                         </goals>
                     </execution>
                 </executions>
