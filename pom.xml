@@ -290,6 +290,9 @@
                             </url>
                         </link>
                     </sourceLinks>
+                    <outputDir>
+                        ${project.basedir}/target/site/apidocs
+                    </outputDir>
                 </configuration>
             </plugin>
         </plugins>
