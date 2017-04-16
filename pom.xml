@@ -273,6 +273,13 @@
                             <goal>javadoc</goal>
                         </goals>
                     </execution>
+                    <execution>
+                        <id>dokka-javadoc</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>javadocJar</goal>
+                        </goals>
+                    </execution>
                 </executions>
                 <configuration>
                     <sourceLinks>
